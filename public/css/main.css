@@ -1,0 +1,176 @@
+/* =========================
+   Global Reset
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   Body
+========================= */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f8fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* =========================
+   Navigation (Top Bar)
+========================= */
+nav {
+    background: linear-gradient(135deg, #6a5acd, #836fff);
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================
+   Main Layout
+========================= */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Page Title */
+h1 {
+    margin-bottom: 20px;
+    color: #2d2a6e;
+    font-size: 2.4rem;
+    font-weight: 800;
+}
+
+/* Subheadings */
+h2 {
+    margin: 15px 0;
+    color: #4b3fbf;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 15px;
+}
+
+/* =========================
+   Home Logo Image
+========================= */
+.main-logo {
+    width: 250px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.main-logo:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   Organization Cards
+========================= */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-3px);
+}
+
+li img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #f0f0ff;
+    padding: 5px;
+}
+
+/* Text inside organization cards */
+li div {
+    text-align: left;
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #777;
+    font-size: 14px;
+}
+
+/* =========================
+   Categories list styling
+========================= */
+.categories-list ul {
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.categories-list li {
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    li div {
+        text-align: center;
+    }
+}
