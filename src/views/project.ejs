@@ -31,6 +31,21 @@
                 <%= project.organization_name %>
             </a>
         </p>
+
+        <!-- CATEGORY TAGS (NEW REQUIREMENT) -->
+        <section class="project-categories">
+            <h3>Categories</h3>
+
+            <% if (categories && categories.length> 0) { %>
+                <% categories.forEach(category=> { %>
+                    <a href="/category/<%= category.category_id %>" class="category-tag">
+                        <%= category.name %>
+                    </a>
+                    <% }) %>
+                        <% } else { %>
+                            <p>No categories assigned.</p>
+                            <% } %>
+        </section>
     </main>
 
-    <%- include('partials/footer') %> vc
+    <%- include('partials/footer') %>

@@ -1,8 +1,3 @@
-app.get('/project/999', (req, res) => {
-  console.log("FORCED ROUTE HIT");
-  res.send("WORKS");
-});
-
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -46,7 +41,6 @@ app.use((req, res, next) => {
   res.locals.NODE_ENV = NODE_ENV;
   next();
 });
-
 // Use the imported router to handle routes 
 app.use(router);
 

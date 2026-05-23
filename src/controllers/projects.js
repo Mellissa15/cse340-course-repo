@@ -1,17 +1,19 @@
 import {
     getUpcomingProjects,
-    getProjectDetails
+    getProjectDetails,
+    getCategoriesForProject
 } from '../models/projects.js';
+
 /* --------------------------------------
    CONSTANT
 -------------------------------------- */
 const NUMBER_OF_UPCOMING_PROJECTS = 5;
 
 /* --------------------------------------
-   PROJECT LIST PAGE
-   /projects
+   PROJECTS LIST PAGE (/projects)
 -------------------------------------- */
 export const showProjectsPage = async (req, res) => {
+    console.log("🔥 PROJECT CONTROLLER ACTIVE FILE");
     const projects = await getUpcomingProjects(NUMBER_OF_UPCOMING_PROJECTS);
     const title = 'Upcoming Service Projects';
 
@@ -22,18 +24,21 @@ export const showProjectsPage = async (req, res) => {
 };
 
 /* --------------------------------------
-   PROJECT DETAILS PAGE
-   /project/:id
+   PROJECT DETAILS PAGE (/project/:id)
 -------------------------------------- */
 export const showProjectDetailsPage = async (req, res) => {
-    console.log("STEP 1: controller hit");
-
     const projectId = req.params.id;
-    console.log("STEP 2: ID =", projectId);
 
     const project = await getProjectDetails(projectId);
-    console.log("STEP 3: project =", project);
 
-    res.send("TEST: controller finished successfully");
+    // THIS is what was missing before
+    const categories = await getCategoriesForProject(projectId);
+
+    res.render('project', {
+        title: project.title,
+        project,
+        categories
+    });
 };
+
 
