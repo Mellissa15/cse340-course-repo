@@ -48,9 +48,11 @@
         </section>
 
         <p>
-            <a href="/edit-project/<%= project.project_id %>">
-                Edit Project
-            </a>
+            <% if (user && user.role_name==='admin' ) { %>
+                <a href="/edit-project/<%= project.project_id %>">
+                    Edit Project
+                </a>
+                <% } %>
         </p>
         <p>
             <a href="/assign-categories/<%= project.project_id %>">

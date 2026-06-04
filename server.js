@@ -45,6 +45,17 @@ app.use(session({
 // Use flash message middleware
 app.use(flash);
 
+// Middleware to make NODE_ENV available to all templates
+app.use((req, res, next) => {
+  res.locals.isLoggedIn = false;
+  if (req.session && req.session.user) {
+    res.locals.isLoggedIn = true;
+  }
+  res.locals.user = req.session.user || null;
+  res.locals.NODE_ENV = NODE_ENV;
+  next();
+});
+
 // Middleware to log all incoming requests
 app.use((req, res, next) => {
   if (NODE_ENV === 'development') {
@@ -55,14 +66,7 @@ app.use((req, res, next) => {
 
 app.use('/', router);
 
-// Middleware to make NODE_ENV available to all templates
-app.use((req, res, next) => {
-  res.locals.NODE_ENV = NODE_ENV;
-  next();
-});
 // Use the imported router to handle routes 
-
-
 // Catch-all route for 404 errors
 app.use((req, res, next) => {
   const err = new Error('Page Not Found');
