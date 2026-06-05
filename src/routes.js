@@ -163,6 +163,13 @@ router.get('/logout', processLogout);
 // Protected dashboard route
 router.get('/dashboard', requireLogin, showDashboard);
 
+router.get(
+    '/users',
+    requireLogin,
+    requireRole('admin'),
+    showUsersPage
+);
+
 /* --------------------------------------
    TEST ERROR PAGE
 -------------------------------------- */

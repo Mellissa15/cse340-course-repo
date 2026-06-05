@@ -4,13 +4,25 @@
         <h1>
             <%= title %>
         </h1>
-
-        <h2>Dashboard</h2>
         <p>Name: <%= name %>
         </p>
         <p>Username: <%= email %>
         </p>
 
-    </main>
+        <!-- ADMIN-ONLY LINKS -->
+        <% if (user && user.role_name==='admin' ) { %>
+            <hr>
 
+            <h3>Admin Options</h3>
+
+            <p>
+                <a href="/users">View Registered Users</a>
+            </p>
+
+            <p>
+                <a href="/new-organization">Add New Organization</a>
+            </p>
+
+            <% } %>
+    </main>
     <%- include('partials/footer') %>

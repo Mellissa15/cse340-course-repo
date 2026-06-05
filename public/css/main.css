@@ -206,3 +206,23 @@ footer {
     background-color: #d1ecf1;
     border-color: #bee5eb;
 }
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px 20px;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr {
+    background-color: #ffffff;
+}
