@@ -8,6 +8,9 @@ import {
 
 import { getAllOrganizations } from '../models/organizations.js';
 import { body, validationResult } from 'express-validator';
+import {
+    isVolunteer
+} from '../models/volunteer.js';
 /* ------------------------------------
    CONSTANT
 -------------------------------------- */
@@ -63,10 +66,20 @@ export const showProjectDetailsPage = async (req, res) => {
     const project = await getProjectDetails(projectId);
     const categories = await getCategoriesForProject(projectId);
 
+    const user = req.session.user;
+
+    let userIsVolunteer = false;
+
+    if (user) {
+        userIsVolunteer = await isVolunteer(user.user_id, projectId);
+    }
+
     res.render('project', {
         title: project.title,
         project,
-        categories
+        categories,
+        user,
+        userIsVolunteer
     });
 };
 

@@ -195,4 +195,24 @@ CREATE TABLE users (
     password_hash VARCHAR(255) NOT NULL,
     role_id INTEGER REFERENCES roles(role_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+); 
+
+-- ========================================
+-- Volunteers Table (Users ↔ Service Projects)
+-- ========================================
+
+CREATE TABLE volunteer (
+    user_id INTEGER NOT NULL,
+    project_id INTEGER NOT NULL,
+    volunteered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (user_id, project_id),
+
+    FOREIGN KEY (user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (project_id)
+        REFERENCES service_project(project_id)
+        ON DELETE CASCADE
 );

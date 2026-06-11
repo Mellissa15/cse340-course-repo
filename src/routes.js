@@ -47,6 +47,11 @@ import {
 } from './controllers/users.js';
 
 import { testErrorPage } from './controllers/errors.js';
+import {
+    addVolunteer,
+    removeVolunteer
+} from './models/volunteer.js';
+
 
 const router = express.Router();
 
@@ -93,6 +98,20 @@ router.get('/projects', showProjectsPage);
 router.get('/project/:id', showProjectDetailsPage);
 
 router.get('/new-project', requireRole('admin'), showNewProjectForm);
+
+/* PROJECT VOLUNTEER ACTIONS */
+
+// Join volunteer list
+router.post('/project/:id/volunteer', requireLogin, async (req, res) => {
+    await addVolunteer(req.session.user.user_id, req.params.id);
+    res.redirect(`/project/${req.params.id}`);
+});
+
+// Remove from volunteer list
+router.post('/project/:id/unvolunteer', requireLogin, async (req, res) => {
+    await removeVolunteer(req.session.user.user_id, req.params.id);
+    res.redirect(`/project/${req.params.id}`);
+});
 
 router.post(
     '/new-project',
